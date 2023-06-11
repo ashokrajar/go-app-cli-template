@@ -79,24 +79,26 @@ func initBuildInfo() {
 		BuildHost = hostName
 	}
 
-	user, _ := user.Current()
+	usr, _ := user.Current()
 	if err == nil {
-		BuiltBy = user.Username
+		BuiltBy = usr.Username
 	}
 }
 
 // ShowBuildInfo displays the application build info
 func ShowBuildInfo() {
 	fmt.Println("##################### Build Info #####################")
-	fmt.Printf("App Version   : %s\n", Version)
-	fmt.Printf("GO Version    : %s\n", GOVersion)
-	fmt.Printf("OS            : %s\n", GOArch)
-	fmt.Printf("Architecture  : %s\n", GOOS)
-	fmt.Printf("Git Branch    : %s\n", VCSBranch)
-	fmt.Printf("Git Commit ID : %s\n", VCSCommitID)
-	fmt.Printf("Build Time    : %s\n", BuildTime)
-	fmt.Printf("Built By      : %s\n", BuiltBy)
-	fmt.Printf("Build Host    : %s\n", BuildHost)
+	fmt.Printf("App Version         : %s\n", Version)
+	fmt.Printf("GO Version          : %s\n", GOVersion)
+	fmt.Printf("OS                  : %s\n", GOArch)
+	fmt.Printf("Architecture        : %s\n", GOOS)
+	fmt.Printf("Git Branch          : %s\n", VCSBranch)
+	fmt.Printf("Git Commit ID       : %s\n", VCSCommitID)
+	fmt.Printf("Git Last Commit     : %s\n", LastCommitOn)
+	fmt.Printf("Build Time          : %s\n", BuildTime)
+	fmt.Printf("Built By            : %s\n", BuiltBy)
+	fmt.Printf("Build Host          : %s\n", BuildHost)
+	fmt.Printf("Dirty Build ?       : %t\n", DirtyBuild)
 	fmt.Println("######################################################")
 }
 
