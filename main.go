@@ -1,7 +1,7 @@
 /*
 MIT License
 
-# Copyright © Ashok Raja
+# Copyright © Ashok Raja <ashokrajar@gmail.com>
 
 Authors: Ashok Raja <ashokrajar@gmail.com>
 
@@ -26,38 +26,9 @@ SOFTWARE.
 package main
 
 import (
-	"fmt"
-	"os"
-
-	log "github.com/ashokrajar/zerolog_wrapper"
-	"go-app-cli-template/config"
+	"go-app-cli-template/cmd"
 )
 
-var Version string
-
-func init() {
-	config.InitConfig()
-}
-
 func main() {
-	cliApp := &cli.App{
-		Name:    "go-app-cli-template",
-		Version: Version,
-		Authors: []*cli.Author{
-			&cli.Author{
-				Name:  "Ashok Raja",
-				Email: "ashokrajar@gmail.com",
-			},
-		},
-		Copyright: "(c) 2023 Ashok Raja <ashokrajar@gmail.com>",
-		Usage:     "A Simple Cli App",
-		Action: func(*cli.Context) error {
-			fmt.Println("Hello World !")
-			return nil
-		},
-	}
-
-	if err := cliApp.Run(os.Args); err != nil {
-		log.Fatal().Err(err)
-	}
+	cmd.Execute()
 }

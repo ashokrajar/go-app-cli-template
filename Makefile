@@ -1,13 +1,8 @@
 APP_NAME=$(notdir $(shell pwd))
-APP_VERSION=0.1.0
+APP_VERSION=$(shell gitversion /showvariable SemVer)
 BIN_DIR=bin
 GIT_BRANCH_NAME=$(shell git rev-parse --abbrev-ref HEAD)
 
-git_commit_id := $(shell git rev-parse --short HEAD)
-build_time := $(shell date)
-built_by := $(shell whoami)
-build_host := $(shell hostname)
-go_version := $(shell go version)
 go_os := $(shell go env GOOS)
 go_arch := $(shell go env GOARCH)
 
@@ -22,10 +17,8 @@ init:
 
 build: init
 	@echo "Building $(APP_NAME) ..."
-	@go build -ldflags "-X '$(APP_NAME)/cmd.Version=$(APP_VERSION)' -X '$(APP_NAME)/cmd.VCSBranch=$(GIT_BRANCH_NAME)' \
-		-X '$(APP_NAME)/cmd.BuildTime=$(build_time)' -X '$(APP_NAME)/cmd.VCSCommitID=$(git_commit_id)' \
-		-X '$(APP_NAME)/cmd.BuiltBy=$(built_by)' -X '$(APP_NAME)/cmd.BuildHost=$(build_host)' \
-		-X '$(APP_NAME)/cmd.GOVersion=$(go_version)'" -o $(BIN_DIR)/$(app_file_name)
+	@go build -ldflags "-X '$(APP_NAME)/cmd.Version=$(APP_VERSION)' -X '$(APP_NAME)/cmd.VCSBranch=$(GIT_BRANCH_NAME)'" \
+		-o $(BIN_DIR)/$(app_file_name)
 	@echo "Binary $(app_file_name) saved in $(BIN_DIR)"
 
 build-docker-image: init
