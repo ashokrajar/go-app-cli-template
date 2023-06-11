@@ -87,6 +87,7 @@ func initBuildInfo() {
 
 // ShowBuildInfo displays the application build info
 func ShowBuildInfo() {
+	fmt.Println("##################### Build Info #####################")
 	fmt.Printf("App Version   : %s\n", Version)
 	fmt.Printf("GO Version    : %s\n", GOVersion)
 	fmt.Printf("OS            : %s\n", GOArch)
@@ -96,6 +97,7 @@ func ShowBuildInfo() {
 	fmt.Printf("Build Time    : %s\n", BuildTime)
 	fmt.Printf("Built By      : %s\n", BuiltBy)
 	fmt.Printf("Build Host    : %s\n", BuildHost)
+	fmt.Println("######################################################")
 }
 
 // versionCmd represents the version command
