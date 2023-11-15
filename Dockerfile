@@ -13,7 +13,7 @@ RUN go build .
 
 # ---
 
-FROM alpine:3.18
+FROM alpine:3.18.4
 
 COPY --from=build /go/src/go-app-cli-template/go-app-cli-template /usr/bin/go-app-cli-template
 
