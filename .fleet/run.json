@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "type": "go",
+            "name": "Run Cli App",
+            "goExecPath": "go",
+            "buildParams": [
+                "$PROJECT_DIR$/main.go"
+            ],
+            "runParams": [
+                "--help"
+            ],
+            "workingDir": "$PROJECT_DIR$",
+            "environment": {
+                "GOPATH": "$USER_HOME$/gopaths/go-app-cli-template",
+            },
+        },
+
+    ]
+}
