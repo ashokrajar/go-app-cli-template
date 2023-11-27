@@ -1,4 +1,3 @@
-// Package cmd
 /*
 MIT License
 
@@ -24,12 +23,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+// Package cmd
 package cmd
 
 import (
 	"fmt"
-	"os"
-	"os/user"
 	"runtime/debug"
 	"time"
 
@@ -47,7 +46,7 @@ var (
 	GOArch       = "Unknown"
 	GOOS         = "Unknown"
 	DirtyBuild   = false
-	BuildTime    = time.Now().Format("Mon, 02 Jan 2006 15:04:05 UTC")
+	BuildTime    = "Unknown"
 )
 
 func init() {
@@ -73,16 +72,6 @@ func initBuildInfo() {
 			GOOS = kv.Value
 		}
 	}
-
-	hostName, err := os.Hostname()
-	if err == nil {
-		BuildHost = hostName
-	}
-
-	usr, _ := user.Current()
-	if err == nil {
-		BuiltBy = usr.Username
-	}
 }
 
 // ShowBuildInfo displays the application build info
@@ -90,11 +79,11 @@ func ShowBuildInfo() {
 	fmt.Println("##################### Build Info #####################")
 	fmt.Printf("App Version         : %s\n", Version)
 	fmt.Printf("GO Version          : %s\n", GOVersion)
-	fmt.Printf("OS                  : %s\n", GOArch)
-	fmt.Printf("Architecture        : %s\n", GOOS)
-	fmt.Printf("Git Branch          : %s\n", VCSBranch)
-	fmt.Printf("Git Commit ID       : %s\n", VCSCommitID)
-	fmt.Printf("Git Last Commit     : %s\n", LastCommitOn)
+	fmt.Printf("OS Family           : %s\n", GOOS)
+	fmt.Printf("H/W Architecture    : %s\n", GOArch)
+	fmt.Printf("VCS Branch          : %s\n", VCSBranch)
+	fmt.Printf("VCS Commit ID       : %s\n", VCSCommitID)
+	fmt.Printf("VCS Last Committed  : %s\n", LastCommitOn)
 	fmt.Printf("Build Time          : %s\n", BuildTime)
 	fmt.Printf("Built By            : %s\n", BuiltBy)
 	fmt.Printf("Build Host          : %s\n", BuildHost)
