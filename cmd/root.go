@@ -90,6 +90,8 @@ func initConfig() {
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match
+	replacer := strings.NewReplacer(".", "_")
+	viper.SetEnvKeyReplacer(replacer)
 
 	// Configure logging and log level
 	logLevel := strings.ToLower(viper.GetString("log.level"))
