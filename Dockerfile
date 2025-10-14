@@ -50,7 +50,7 @@ RUN go build -ldflags "-X '${APP_NAME}/cmd.Version=${APP_VERSION}' -X '${APP_NAM
 
 # ---
 
-FROM alpine:3.18.4
+FROM alpine:3.22.2
 
 ENV APP_NAME=go-app-cli-template
 
